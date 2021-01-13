@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name=”description” content="Free sms service. Send sms for free, around the world.">
+    <meta name=”keywords” content="free sms, anonymous sms, sms, sms service, free, jsms
+                                        java, spring, httpcomponents, textbelt, api">
+    <title>JSms.me: Send free sms around the world</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+
+    <style>
+        .jumbotron {
+            padding: 2rem 1rem;
+            margin-bottom: 2rem;
+            background-color: #e9ecef;
+            border-radius: .3rem;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            height: 10%;
+            width: 10%;
+        }
+
+        @media only screen and (max-width: 400px) {
+            .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                height: 20%;
+                width: 20%;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5fff30e42bc64600181b11fe&product=inline-share-buttons" async="async"></script>
+</head>
+<body>
+
+<div class="jumbotron m-3">
+    <div class="col-xs-2">
+        <img class="img-responsive center" src="/img/jsms.PNG" alt="JSms logo">
+    </div>
+    <br>
+    <div class="alert alert-warning" role="alert">
+        Please use this website for joke to friends.<br>
+        We aren't responsible otherwise!
+    </div>
+    <form action="/" method="post">
+        <div th:if="${sent}" th:text="${sent}" class="alert alert-success" role="alert">
+        </div>
+        <div th:if="${not_sent}" th:text="${not_sent}" class="alert alert-danger" role="alert">
+        </div>
+        <div th:if="${spam_link}" th:text="${spam_link}" class="alert alert-danger" role="alert">
+        </div>
+        <div class="mb-3">
+            <label for="text" class="form-label">Phone Number</label>
+            <input type="text" name="toPhoneNumber" class="form-control" id="text" placeholder="example: +6847589547">
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" name="messageText" id="message" placeholder="message to friend for joke">
+
+            </textarea>
+        </div>
+        <div class="mb-3">
+            <label for="key" class="form-label">Key</label>
+            <input type="text" name="key" class="form-control" id="key"
+                   placeholder="type textbelt for default. It give you 1 free sms per day">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br>
+    <div class="sharethis-inline-share-buttons" id="share"></div>
+</div>
+
+</body>
+</html>
