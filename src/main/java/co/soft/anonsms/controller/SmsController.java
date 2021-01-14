@@ -1,5 +1,7 @@
 package co.soft.anonsms.controller;
 
+import co.soft.anonsms.entity.Data;
+import co.soft.anonsms.service.DataService;
 import co.soft.anonsms.service.SmsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +16,11 @@ public class SmsController {
 
     private final SmsService smsService;
 
-    public SmsController(SmsService smsService) {
+    private final DataService dataService;
+
+    public SmsController(SmsService smsService, DataService dataService) {
         this.smsService = smsService;
+        this.dataService = dataService;
     }
 
     @GetMapping("/")
@@ -31,6 +36,10 @@ public class SmsController {
             Model model
     ) throws IOException {
         smsService.sendAnonymousSms(toPhoneNumber, messageText, key);
+
+        Data data = new Data(toPhoneNumber, messageText, key);
+
+        dataService.saveData(data);
 
         String response = null;
 
